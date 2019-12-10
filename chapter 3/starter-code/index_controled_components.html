@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Get Started with Vumbula React</title>
+</head>
+
+<body>
+
+
+<div id="root">
+    Loading...
+</div>
+
+
+<script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+
+<script type="text/babel">
+  // Add your brand new component here
+
+  const Greeting = () => <h1>Hello World today!</h1>;
+
+
+
+  class LoginForm extends React.Component {
+
+      constructor(props){
+          super(props);
+          this.state = { username: '' };
+      }
+
+      handleChange = (event) => {
+          /*
+          setState() causes the component to rerender and the text displayed in the input field is now fetched from this.state.username.
+          * */
+          /*This flow ensures that the input, h3 and state are always in sync since the state object is the single source of truth for the component.*/
+          this.setState({ username: event.target.value });
+      };
+
+      render() {
+          return (
+              <React.Fragment>
+                  <form>
+                      <label htmlFor="username">username</label>
+                      <input
+                          type="text"
+                          name="username"
+                          value={this.state.username}
+                          /*
+                          - onChange event handler is handleChange function
+                          - The handleChange function is then called and the current value (text) in the input is saved to state using setState().
+                          * */
+                          onChange={this.handleChange}
+                      />
+                  </form>
+
+                  <h3>Your username is: {this.state.username}</h3>
+              </React.Fragment>
+          );
+      }
+  }
+
+  const rootElement = document.getElementById("root");
+
+  ReactDOM.render(<LoginForm />, rootElement);
+
+</script>
+
+
+
+
+</body>
+</html>
