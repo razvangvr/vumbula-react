@@ -1,22 +1,15 @@
 class Application extends React.Component{
     render(){
-        return (
-        <>
+        console.log(this.props)
+        return<>
             <Nav/>
-
             <Jumbotron/>
-
             <div className="container pt-4">
-
-                <Toys/>
-
+                <Toys toys={this.props.toys}/>
                 <hr/>
-
                 <Footer/>
-
             </div>
         </>
-        );
     }
 }
 
@@ -50,116 +43,15 @@ const Jumbotron = () =>
         </div>
     </div>
 
-const Toys = () =>
+const Toys = props =>
     <>
-        <h1 id="toys" className="display-4 my-4 text-center text-muted">Toys</h1>
+        <h1 id="toys"
+            className="display-4 my-4 text-center text-muted">Toys
+        </h1>
         <div className="row">
-            <div className="col-md-6 col-lg-3">
-                <div className="card mb-3">
-                    <img className="card-img-top" src="img/1.png" />
-                    <div className="card-body">
-                        <h4 className="card-title text-center">Toy One</h4>
-                        <p className="card-text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been
-                            the industry's standard dummy text ever since the 1500s.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
-                <div className="card mb-3">
-                    <img className="card-img-top" src="img/2.png" />
-                    <div className="card-body">
-                        <h4 className="card-title text-center">Toy Two</h4>
-                        <p className="card-text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been
-                            the industry's standard dummy text ever since the 1500s.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
-                <div className="card mb-3">
-                    <img className="card-img-top" src="img/3.png" />
-                    <div className="card-body">
-                        <h4 className="card-title text-center">Toy Three</h4>
-                        <p className="card-text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been
-                            the industry's standard dummy text ever since the 1500s.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
-                <div className="card mb-3">
-                    <img className="card-img-top" src="img/4.png" />
-                    <div className="card-body">
-                        <h4 className="card-title text-center">Toy Four</h4>
-                        <p className="card-text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been
-                            the industry's standard dummy text ever since the 1500s.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
-                <div className="card mb-3">
-                    <img className="card-img-top" src="img/5.png" />
-                    <div className="card-body">
-                        <h4 className="card-title text-center">Toy Five</h4>
-                        <p className="card-text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been
-                            the industry's standard dummy text ever since the 1500s.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
-                <div className="card mb-3">
-                    <img className="card-img-top" src="img/6.png" />
-                    <div className="card-body">
-                        <h4 className="card-title text-center">Toy Six</h4>
-                        <p className="card-text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been
-                            the industry's standard dummy text ever since the 1500s.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
-                <div className="card mb-3">
-                    <img className="card-img-top" src="img/7.png" />
-                    <div className="card-body">
-                        <h4 className="card-title text-center">Toy Seven</h4>
-                        <p className="card-text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been
-                            the industry's standard dummy text ever since the 1500s.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
-                <div className="card mb-3">
-                    <img className="card-img-top" src="img/8.png" />
-                    <div className="card-body">
-                        <h4 className="card-title text-center">Toy Eight</h4>
-                        <p className="card-text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been
-                            the industry's standard dummy text ever since the 1500s.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            {props.toys.map((toy, index) => <Card key={index} toy={toy}/>)}
         </div>
-    </>
+    </>;
 
 const Footer = () =>
     <div className="row py-3">
@@ -175,8 +67,75 @@ const Footer = () =>
         </div>
     </div>
 
+const Card = (props) =>
+    <div className="col-md-6 col-lg-3">
+        <div className="card mb-3">
+            <img className="card-img-top" src={`img/${props.toy.image}.png`} />
+            <div className="card-body">
+                <h4 className="card-title text-center">{props.toy.name}</h4>
+                <p className="card-text">
+                    {props.toy.description}
+                </p>
+            </div>
+        </div>
+    </div>;
+
+const toys = [
+    {
+        name: "Toy one",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
+            "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        image: "1"
+    },
+    {
+        name: "Toy two",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
+            "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        image: "2"
+    },
+    {
+        name: "Toy three",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
+            "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        image: "3"
+    },
+    {
+        name: "Toy four",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
+            "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        image: "4"
+    },
+    {
+        name: "Toy five",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
+            "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        image: "5"
+    },
+    {
+        name: "Toy six",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
+            "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        image: "6"
+    },
+    {
+        name: "Toy seven",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
+            "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        image: "7"
+    },
+    {
+        name: "Toy eight",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
+            "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        image: "8"
+    },
+];
+
 
 ReactDOM.render(
-    <Application/>,
+    //<Application/>,
+    <Application toys={toys}/>,
+    /* We need to pass in the toys array as props to the application component
+    so that the Toys component can get access to them.*/
     document.getElementById('root')
 );
