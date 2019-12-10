@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Get Started with Vumbula React</title>
+</head>
+
+<body>
+
+
+<div id="root">
+    Loading...
+</div>
+
+<!--=> The Babel script allows us to transpile ES6 to ES5. Some browsers have limited support for ES6 features;
+transpiling our ES6 to ES5 allows us to use the modern features of ES6 in our design without having to worry about compatibility.-->
+<script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+
+<!--=> The React script allows us to write React components-->
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+
+<!--The ReactDOM script allows us to place our components and work with them in the context of the DOM-->
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+
+<script type="text/babel">
+    // Add your brand new component here
+
+    //const Greeting = () => <h1>Hello World today!</h1>;
+    // function Greeting() {
+    //
+    //     return <h1>Hello World today!</h1>;
+    // }
+
+    class Greeting extends React.Component {
+
+        /*
+        Adding state to the component involves defining within the class,
+        a constructor function that assigns the initial state using this.state.
+        * */
+        constructor(props) {
+            //Adding super() is a must when using the constructor.
+            super(props);
+            // Define your state object here
+            this.state = {
+                name: 'Jane Doe'
+            }
+        }
+// Define your render method here
+        render() {
+            return<>
+            <h1>I’m a component in need of some state!</h1>
+            <h2>Hello { this.state.name } </h2>
+            </>
+        }
+    }
+
+    const rootElement = document.getElementById("root");
+
+    ReactDOM.render(<Greeting/>, rootElement);
+
+</script>
+
+
+</body>
+</html>
