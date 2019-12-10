@@ -28,15 +28,20 @@
 
       constructor(props){
           super(props);
-          this.state = { username: '' };
+          this.state = { username: '', password: '' };
       }
 
-      handleChange = (event) => {
-          /*
-          setState() causes the component to rerender and the text displayed in the input field is now fetched from this.state.username.
-          * */
-          /*This flow ensures that the input, h3 and state are always in sync since the state object is the single source of truth for the component.*/
-          this.setState({ username: event.target.value });
+      // handleChange = (event) => {
+      //     /*
+      //     setState() causes the component to rerender and the text displayed in the input field is now fetched from this.state.username.
+      //     * */
+      //     /*This flow ensures that the input, h3 and state are always in sync since the state object is the single source of truth for the component.*/
+      //     this.setState({ username: event.target.value });
+      // };
+
+      handleChange = ({ target }) => {
+          console.log(target.name)
+          return this.setState({ [target.name]: target.value });
       };
 
       render() {
@@ -54,6 +59,15 @@
                           * */
                           onChange={this.handleChange}
                       />
+
+                      <label htmlFor="password">password</label>
+                      <input
+                          type="password"
+                          name="password"
+                          value={this.state.password}
+                          onChange={this.handleChange}
+                      />
+
                   </form>
 
                   <h3>Your username is: {this.state.username}</h3>
