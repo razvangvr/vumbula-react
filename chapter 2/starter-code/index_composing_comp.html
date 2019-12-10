@@ -7,7 +7,6 @@
 
 <body>
 
-
 <div id="root">
     Loading...
 </div>
@@ -22,19 +21,37 @@ transpiling our ES6 to ES5 allows us to use the modern features of ES6 in our de
 <!--The ReactDOM script allows us to place our components and work with them in the context of the DOM-->
 <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
 
+
 <script type="text/babel">
   // Add your brand new component here
 
   const Greeting = () => <h1>Hello World today!</h1>;
 
-  const rootElement = document.getElementById("root");
+    //Avatar component
+  const Avatar = () => <img src="http://i.pravatar.cc/300"/>;
 
-  ReactDOM.render(<Greeting />, rootElement);
+  //Username component
+  const UserName = () => <h4>janedoe</h4>;
+
+  //Bio component
+  const Bio = () =>
+      <p>
+          <strong>Bio: </strong>
+          Lorem ipsum dolor sit amet, justo a bibendum phasellus proodio
+          ligula, sit
+      </p>;
+
+  // UserProfile component
+  const UserProfile = () =>
+      <div>
+          <Avatar/>
+          <UserName/>
+          <Bio/>
+      </div>;
+
+    const rootElement = document.getElementById("root");
+    ReactDOM.render(<UserProfile />, rootElement);
 
 </script>
-
-
-
-
 </body>
 </html>

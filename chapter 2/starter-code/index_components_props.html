@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Get Started with Vumbula React</title>
+</head>
+
+<body>
+<div id="root">
+    Loading...
+</div>
+<hr>
+<div id="containerDiv">
+    Loading...
+</div>
+
+<!--=> The Babel script allows us to transpile ES6 to ES5. Some browsers have limited support for ES6 features;
+transpiling our ES6 to ES5 allows us to use the modern features of ES6 in our design without having to worry about compatibility.-->
+<script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+
+<!--=> The React script allows us to write React components-->
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+
+<!--The ReactDOM script allows us to place our components and work with them in the context of the DOM-->
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+
+
+<script type="text/babel">
+  // Add your brand new component here
+
+//const Greeting = () => <h1>Hello World today!</h1>;
+//  const Greeting = (props) => <h1>Hello, {props.name}</h1>;
+  function Greeting(props) {
+      return <h1>Hello, {props.name}</h1>;
+  }
+
+  const rootElement = document.getElementById("root");
+
+//ReactDOM.render(<Greeting />, rootElement);
+  ReactDOM.render(<Greeting name={'Edmond'}/>, rootElement);
+
+  // - the name is passed by specifying propName={propValue}
+  // - name attribute is accessed using the dot syntax, e.g. props.name
+
+
+  // ## Using Props with Class Components
+
+class GreetingClassComponent extends React.Component{
+      render() {
+          /*
+          This component only renders built-in DOM components like <div />
+          But you can compose and render custom React components too.
+          For example, we can now refer to the whole shopping list by writing <ShoppingList />
+          Each React component is encapsulated and can operate independently;
+          this allows you to build complex UIs from simple components.
+          * */
+        return(
+            <div>
+                <h1>Hello, {this.props.name}</h1>
+                <h2>Age: {this.props.age}</h2>
+                <h2>Gender: {this.props.gender}</h2>
+            </div>
+        );
+      }
+  }
+//=> Props is not passed as an argument to the class
+//=> The name attribute is accessed using this.props.name instead of props.name
+
+  const containerElement = document.getElementById("containerDiv");
+
+  ReactDOM.render(<GreetingClassComponent
+          name={'Razvan'}
+          age={2}
+          gender={'male'}/>,
+      containerElement);
+
+
+
+</script>
+</body>
+</html>

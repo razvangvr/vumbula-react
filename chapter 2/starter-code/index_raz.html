@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Get Started with Vumbula React</title>
+</head>
+
+<body>
+<div id="root">
+    Loading...
+</div>
+<hr>
+<div id="containerDiv">
+    Loading...
+</div>
+
+<!--=> The Babel script allows us to transpile ES6 to ES5. Some browsers have limited support for ES6 features;
+transpiling our ES6 to ES5 allows us to use the modern features of ES6 in our design without having to worry about compatibility.-->
+<script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+
+<!--=> The React script allows us to write React components-->
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+
+<!--The ReactDOM script allows us to place our components and work with them in the context of the DOM-->
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+
+
+<script type="text/babel">
+    // Add your brand new component here
+
+
+    /*
+    a component is a JavaScript class or function that optionally accepts inputs i.e. properties(props)
+    and returns a React element that describes how a section of the UI
+    */
+
+    //This is a functional component (called Greeting)
+    function Greeting() {
+        return (
+            <div className="rzClass">
+                <h1>Hello World today, raz! and <em>Dani</em></h1>
+            </div>
+        );
+    }
+
+    const Greeting2 = () => <h1>Hi, I’m a dumb component!</h1>;
+
+    const rootElement = document.getElementById("root");
+
+    /*
+    Use ReactDOM’s render method to render the Greeting element into the DOM in a container with the id of root.
+    * */
+    ReactDOM.render(<Greeting />, rootElement);
+
+    //class components
+    /*
+    Components can also be written using ES6 classes instead of functions.
+    Such components are called class components.
+    * */
+    class ClassComponent extends React.Component{
+        render(){
+            return <h1>Hello World Today! (from class component)</h1>;
+        }
+    }
+
+    const containerElement = document.getElementById("containerDiv");
+    ReactDOM.render(<ClassComponent />, containerElement);
+
+
+</script>
+</body>
+</html>
