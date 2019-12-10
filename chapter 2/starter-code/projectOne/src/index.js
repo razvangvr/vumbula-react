@@ -1,19 +1,25 @@
-const Application = () =>
-<>
-    <Nav/>
+class Application extends React.Component{
+    render(){
+        return (
+        <>
+            <Nav/>
 
-    <Jumbotron/>
+            <Jumbotron/>
 
-    <div className="container pt-4">
+            <div className="container pt-4">
 
-        <Toys/>
+                <Toys/>
 
-        <hr/>
+                <hr/>
 
-        <Footer/>
+                <Footer/>
 
-    </div>
-</>;
+            </div>
+        </>
+        );
+    }
+}
+
 
 const Nav  = () =>
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
