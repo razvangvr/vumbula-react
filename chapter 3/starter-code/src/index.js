@@ -12,6 +12,18 @@ class Application extends React.Component {
         }
     }
 
+    onSubmit = (event) => {
+        event.preventDefault();
+        const name = this.name.value;
+        const age = this.age.value;
+        const info = {name: name, age: age};
+        const data = this.state.data;
+        data.push(info);
+        this.setState({
+            data: data
+        });
+    }
+
     render() {
         return (
             <div className="container">
@@ -21,7 +33,8 @@ class Application extends React.Component {
                 User Input
 
                 <div className="row">
-                    <form className="form-inline">
+                    {/* add onSubmit event handler to the form*/}
+                    <form className="form-inline" onSubmit={this.onSubmit}>
                         <input
                             type="text"
                             className="form-control mb-2 mr-sm-2 mb-sm-0"
