@@ -26,12 +26,16 @@ class Application extends React.Component {
                             type="text"
                             className="form-control mb-2 mr-sm-2 mb-sm-0"
                             placeholder="Name"
+                            //The ref attribute accepts a callback which receives the underlying DOM element as its argument.
+                            //in the callback we store a reference to the text input of the DOM element within an instance variable
+                            ref={ (input) => this.name = input }
                         />
                         <div className="input-group mb-2 mr-sm-2 mb-sm-0">
                             <input
                                 type="text"
                                 className="form-control"
                                 placeholder="Age"
+                                ref={ (input) => this.age = input }
                             />
                         </div>
                         <button type="submit" className="btn btn-primary">Save</button>
