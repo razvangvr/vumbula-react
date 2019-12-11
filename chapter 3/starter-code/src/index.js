@@ -17,8 +17,7 @@ class Application extends React.Component {
         const name = this.name.value;
         const age = this.age.value;
         const info = {name: name, age: age};
-        const data = this.state.data;
-        data.push(info);
+        const data = [...this.state.data, info];
         this.setState({
             data: data
         });
