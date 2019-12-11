@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Get Started with Vumbula React</title>
+</head>
+
+<body>
+
+
+<div id="root">
+    Loading...
+</div>
+
+<!--=> The Babel script allows us to transpile ES6 to ES5. Some browsers have limited support for ES6 features;
+transpiling our ES6 to ES5 allows us to use the modern features of ES6 in our design without having to worry about compatibility.-->
+<script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+
+<!--=> The React script allows us to write React components-->
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+
+<!--The ReactDOM script allows us to place our components and work with them in the context of the DOM-->
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+
+<script type="text/babel">
+  // Add your brand new component here
+
+  class LoginForm extends React.Component {
+
+      handleSubmit = (event) => {
+          event.preventDefault();
+          alert('Your username is: ' + this.input.value);
+      };
+
+
+      render() {
+          return (
+              <form onSubmit={this.handleSubmit}>
+                  <label htmlFor="username">username</label>
+                  <input
+                      type="text"
+                      name="username"
+                      defaultValue="cool-guy"
+                      ref={(input) => this.input = input}
+                  />
+                  <br />
+                  <input type="submit" value="Submit" />
+              </form>
+          );
+      }
+  }
+
+  const rootElement = document.getElementById("root");
+  ReactDOM.render(<LoginForm />, rootElement);
+
+</script>
+
+
+
+
+</body>
+</html>
